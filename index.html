@@ -644,6 +644,11 @@
         padding: 1.2rem 1.25rem;
       }
     }
+    .xv-nav-pill{display:flex;flex-direction:column;align-items:flex-start;gap:1px;margin-left:10px;padding-left:10px;border-left:1px solid var(--border);white-space:nowrap;flex-shrink:0;text-decoration:none;}
+    .xv-pill-name{font-family:'Share Tech Mono',monospace;font-size:13px;letter-spacing:4px;line-height:1;}
+    .xv-pill-accent{color:var(--accent);}
+    .xv-pill-text{color:var(--text);}
+    .xv-pill-tagline{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1.5px;}
   </style>
 </head>
 
@@ -653,6 +658,10 @@
     <div class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></div>
     <div class="nav-brand"><a href="https://h3ad-sec.github.io/"><img id="logoImg"
           src="https://h3ad-sec.github.io/logo-dark.png" alt="H3AD-SEC"></a></div>
+    <a class="xv-nav-pill" id="xv-nav-pill" href="https://h3ad-sec.github.io/H3AD-OPS/" style="text-decoration:none">
+      <span class="xv-pill-name"><span class="xv-pill-accent">H3AD</span><span class="xv-pill-text">-OPS</span></span>
+      <span class="xv-pill-tagline">SecOps Automation.</span>
+    </a>
     <div class="nav-links">
       <div class="nav-divider"></div>
       <a href="https://h3ad-sec.github.io/H3AD/" target="_blank" rel="noopener">H3AD</a>
