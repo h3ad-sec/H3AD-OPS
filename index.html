@@ -8,37 +8,49 @@
   <meta name="description"
     content="H3AD-OPS by H3AD-SEC - SecOps automation platform. Daily workflow queries, SOC triage tools, and copy-ready detection playbooks.">
   <link rel="icon" href="https://h3ad-sec.github.io/fevicon.png?v=2026" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #06080e;
-      --panel: #0b1018;
-      --panel-alt: #101824;
+      --bg: #080c14;
+      --panel: #0d1117;
+      --panel-alt: #111827;
       --surface: #18253a;
-      --text: #e2eeff;
+      --text: #e6edf3;
       --text-dim: #96b0cc;
-      --muted: #62809c;
+      --muted: #6b7280;
       --muted-dim: #3a5470;
-      --accent: #00ff9f;
-      --accent2: #4d94ff;
-      --border: #1e3050;
-      --border-dim: #121e30;
+      --accent: #00d4ff;
+      --accent2: #58a6ff;
+      --border: #1c2333;
+      --border-dim: #111827;
+      --primary:        #00d4ff;
+      --primary-dim:    rgba(0, 212, 255, 0.08);
+      --primary-glow:   rgba(0, 212, 255, 0.18);
+      --status-live:    #00d4ff;
+      --status-partial: #f59e0b;
+      --status-soon:    #2d3748;
       --nav-h: 48px;
     }
 
     body.light {
-      --bg: #eef2f8;
+      --bg: #f8fafc;
       --panel: #ffffff;
-      --panel-alt: #e4ecf6;
+      --panel-alt: #f1f5f9;
       --surface: #ccd8ec;
-      --text: #060e1c;
+      --text: #0d1117;
       --text-dim: #142540;
-      --muted: #2c4a6a;
+      --muted: #5c6b8a;
       --muted-dim: #5c7a9a;
-      --accent: #004db8;
-      --accent2: #007a55;
-      --border: #a0b8d4;
-      --border-dim: #c8d8ec;
+      --accent: #0284c7;
+      --accent2: #2563eb;
+      --border: #e2e8f0;
+      --border-dim: #f1f5f9;
+      --primary:        #0284c7;
+      --primary-dim:    rgba(2, 132, 199, 0.07);
+      --primary-glow:   rgba(2, 132, 199, 0.14);
+      --status-live:    #0284c7;
+      --status-partial: #d97706;
+      --status-soon:    #cbd5e1;
     }
 
     *,
@@ -56,7 +68,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Share Tech Mono', monospace;
+      font-family: 'Exo 2', sans-serif;
       font-size: 14px;
       line-height: 1.6;
       min-height: 100vh;
@@ -64,24 +76,25 @@
       transition: background 0.3s, color 0.3s;
     }
 
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 45% at 50% 0%, rgba(0, 212, 255, 0.055) 0%, transparent 100%),
+        radial-gradient(ellipse 50% 35% at 5% 100%, rgba(88, 166, 255, 0.04) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body.light::before {
+      background:
+        radial-gradient(ellipse 80% 45% at 50% 0%, rgba(2, 132, 199, 0.05) 0%, transparent 100%),
+        radial-gradient(ellipse 50% 35% at 5% 100%, rgba(37, 99, 235, 0.03) 0%, transparent 100%);
+    }
+
     a {
       color: inherit;
       text-decoration: none;
-    }
-
-    #matrix-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.18;
-    }
-
-    body.light #matrix-canvas {
-      opacity: 0.10;
     }
 
     .nav {
@@ -125,6 +138,8 @@
     }
 
     .nav-links a {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 500;
       font-size: 0.68rem;
       color: var(--muted);
       padding: 5px 9px;
@@ -192,6 +207,8 @@
     }
 
     .nav-links .nav-dropdown a {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 400;
       display: block;
       padding: 7px 12px;
       font-size: 0.65rem;
@@ -280,6 +297,8 @@
     }
 
     .nav-drawer a {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 500;
       font-size: 0.75rem;
       color: var(--text-dim);
       padding: 8px 10px;
@@ -319,6 +338,7 @@
     }
 
     .hero-tag {
+      font-family: 'Share Tech Mono', monospace;
       font-size: 0.6rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
@@ -329,6 +349,8 @@
     }
 
     .hero-title {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 700;
       font-size: clamp(1.4rem, 4vw, 2.6rem);
       color: var(--text);
       letter-spacing: 0.04em;
@@ -341,6 +363,8 @@
     }
 
     .hero-sub {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 300;
       font-size: 0.8rem;
       color: var(--text-dim);
       max-width: 560px;
@@ -404,18 +428,24 @@
     }
 
     .tf-name {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 700;
       font-size: 1rem;
       letter-spacing: 0.14em;
       color: var(--text);
     }
 
     .tf-tagline {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 300;
       font-size: 0.8rem;
       color: var(--accent);
       letter-spacing: 0.03em;
     }
 
     .tf-body {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 400;
       font-size: 0.71rem;
       color: var(--text-dim);
       line-height: 1.8;
@@ -423,6 +453,7 @@
     }
 
     .tf-meta {
+      font-family: 'Share Tech Mono', monospace;
       font-size: 0.57rem;
       letter-spacing: 0.2em;
       color: var(--muted);
@@ -432,6 +463,8 @@
     }
 
     .tf-link {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -461,9 +494,9 @@
     }
 
     .badge-live {
-      background: rgba(0, 255, 159, 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(0, 255, 159, 0.3);
+      background: rgba(0, 212, 255, 0.1);
+      color: #00d4ff;
+      border: 1px solid rgba(0, 212, 255, 0.25);
     }
 
     .manifesto-strip {
@@ -520,10 +553,10 @@
 
     #scroll-sentinel{position:absolute;top:0;left:0;width:1px;height:10px;pointer-events:none;}
     .xv-nav-pill{display:flex;flex-direction:column;align-items:flex-start;gap:1px;margin-left:10px;padding-left:10px;border-left:1px solid var(--border);opacity:0;transform:translateX(-8px);pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;flex-shrink:0;}
-    .xv-pill-name{font-family:'Share Tech Mono',monospace;font-size:13px;letter-spacing:4px;line-height:1;}
+    .xv-pill-name{font-family:'Exo 2',sans-serif;font-weight:700;font-size:13px;letter-spacing:4px;line-height:1;}
     .xv-pill-accent{color:var(--accent);}
     .xv-pill-text{color:var(--text);}
-    .xv-pill-tagline{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1.5px;}
+    .xv-pill-tagline{font-family:'Exo 2',sans-serif;font-weight:400;font-size:8px;color:var(--muted);letter-spacing:1.5px;}
     body.hero-hidden .xv-nav-pill{opacity:1;transform:translateX(0);pointer-events:auto;}
     body.hero-hidden .hero{transform:translateY(-100%);opacity:0;pointer-events:none;}
     body.hero-hidden .page{padding-top:calc(var(--nav-h) + 20px);}
@@ -536,18 +569,30 @@
 
     .hero-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.75rem;}
     .stat-chip{display:flex;flex-direction:column;padding:10px 16px;background:var(--panel);border:1px solid var(--border);border-radius:4px;min-width:88px;}
-    .stat-val{font-size:1.05rem;color:var(--accent);letter-spacing:0.04em;line-height:1.2;}
+    .stat-val{font-family:'Exo 2',sans-serif;font-weight:700;font-size:1.05rem;color:var(--accent);letter-spacing:0.04em;line-height:1.2;}
     .stat-label{font-size:0.53rem;letter-spacing:0.18em;color:var(--muted);margin-top:4px;}
 
     @media(max-width:600px){
       .stat-chip{min-width:72px;}
     }
+
+    .cap-strip {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      border-radius: 6px; overflow: hidden; margin-bottom: 2.5rem;
+    }
+    .cap-item {
+      background: var(--panel); padding: 14px 18px;
+      display: flex; flex-direction: column; gap: 5px;
+    }
+    .cap-label { font-family: 'Share Tech Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+    .cap-value { font-family: 'Exo 2', sans-serif; font-weight: 600; font-size: 0.75rem; color: var(--text); letter-spacing: 0.04em; }
+    .cap-value span { color: var(--accent); }
   </style>
 </head>
 
 <body class="dark">
   <div id="scroll-sentinel" aria-hidden="true"></div>
-  <canvas id="matrix-canvas"></canvas>
 
   <nav class="nav">
     <div class="hamburger" id="hamburger" onclick="toggleDrawer()">
@@ -650,9 +695,9 @@
 
   <div class="page">
     <div class="hero">
-      <span class="hero-tag">H3AD-SEC / SECOPS AUTOMATION SUITE</span>
-      <h1 class="hero-title">You're not paid<br>to <span>copy-paste.</span></h1>
-      <p class="hero-sub">The queries you run every shift — pre-built, copy-ready, and organized by the four pillars of daily SOC work. Open the tool. Run the query. Move on.</p>
+      <span class="hero-tag">SOC OPERATIONS MODULE</span>
+      <h1 class="hero-title">Daily Workflows,<br><span>Zero Repetition.</span></h1>
+      <p class="hero-sub">Pre-built operational queries for authentication, network, endpoint, and cloud — organized for the analysts who run these searches every shift. Less context-switching, faster triage, more consistent coverage.</p>
       <div class="hero-stats">
         <div class="stat-chip"><span class="stat-val">1</span><span class="stat-label">TOOL LIVE</span></div>
         <div class="stat-chip"><span class="stat-val">4</span><span class="stat-label">QUERY CATEGORIES</span></div>
@@ -665,6 +710,25 @@
       <p class="manifesto-text">Automation isn't about replacing the analyst.<br>It's about removing the work that doesn't need one.</p>
     </div>
 
+    <div class="cap-strip">
+      <div class="cap-item">
+        <span class="cap-label">Coverage Areas</span>
+        <span class="cap-value"><span>4</span> Domains</span>
+      </div>
+      <div class="cap-item">
+        <span class="cap-label">Query Format</span>
+        <span class="cap-value">KQL · <span>SPL</span></span>
+      </div>
+      <div class="cap-item">
+        <span class="cap-label">Use Case</span>
+        <span class="cap-value">Daily <span>Triage</span></span>
+      </div>
+      <div class="cap-item">
+        <span class="cap-label">Delivery</span>
+        <span class="cap-value">Copy-<span>Ready</span></span>
+      </div>
+    </div>
+
     <div class="section-label">TOOLS</div>
 
     <div class="tool-feature">
@@ -673,7 +737,7 @@
         <span class="card-badge badge-live">LIVE</span>
       </div>
       <div class="tf-tagline">"Daily queries. Zero ramp-up. Every shift."</div>
-      <div class="tf-body">A curated query library built for the daily grind — authentication anomalies, suspicious network activity, endpoint behaviour, and cloud misconfigurations. KQL, Sigma, and XQL. Pre-structured, context-labelled, and ready to paste directly into your SIEM.</div>
+      <div class="tf-body">Pre-built daily workflow queries across authentication, network, endpoint, and cloud domains. Every query is named for what it finds — not what it uses. Organized for L1-L2 analysts running structured triage shifts in Sentinel or Splunk.</div>
       <div class="tf-meta">4 CATEGORIES · KQL / SIGMA / XQL · COPY-READY</div>
       <a class="tf-link" href="https://h3ad-sec.github.io/QUICKTRACE/" target="_blank" rel="noopener">LAUNCH QUICKTRACE →</a>
     </div>
@@ -719,36 +783,6 @@
 
     /* ── HERO SCROLL HIDE ── */
     (function(){var s=document.getElementById('scroll-sentinel');if(!s)return;new IntersectionObserver(function(e){document.body.classList.toggle('hero-hidden',!e[0].isIntersecting);},{threshold:0}).observe(s);})();
-
-    /* ── MATRIX ─────────────────────────────────────────────────────────────── */
-    const canvas = document.getElementById('matrix-canvas');
-    const ctx = canvas.getContext('2d');
-    const chars = ['SOAR', 'Playbook', 'Enrich', 'Triage', 'Alert', 'Automate', 'Runbook', 'Ticket', 'SIEM',
-      'KQL', 'Sigma', 'XQL', 'Sentinel', 'XSOAR', 'Pipeline', 'Connector', 'IOC', 'Context',
-      'Score', 'Priority', 'MTTD', 'MTTR', 'FP', 'TP', 'Containment', 'Isolate', 'Block',
-      'Escalate', 'Close', 'Resolve', 'Auth', 'Network', 'Endpoint', 'Cloud', 'Query',
-      'QUICKTRACE', 'H3AD-OPS', 'H3AD-SEC', 'Webhook', 'API', 'Correlation', 'Detection'];
-    let drops = [];
-    function initMatrix() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      drops = Array(Math.floor(window.innerWidth / 18)).fill(1);
-    }
-    function drawMatrix() {
-      const l = document.body.classList.contains('light');
-      ctx.fillStyle = l ? 'rgba(238,242,248,0.08)' : 'rgba(0,0,0,0.12)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = l ? '#004db8' : '#00ff9f';
-      ctx.font = '12px monospace';
-      for (let i = 0; i < drops.length; i++) {
-        ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * 18, drops[i] * 18);
-        if (drops[i] * 18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-      }
-    }
-    window.addEventListener('resize', initMatrix);
-    initMatrix();
-    setInterval(drawMatrix, 45);
   </script>
 </body>
 
