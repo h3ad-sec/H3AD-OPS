@@ -572,8 +572,29 @@
     .stat-val{font-family:'Exo 2',sans-serif;font-weight:700;font-size:1.05rem;color:var(--accent);letter-spacing:0.04em;line-height:1.2;}
     .stat-label{font-size:0.53rem;letter-spacing:0.18em;color:var(--muted);margin-top:4px;}
 
+    @media(max-width:640px){
+      .page {
+        padding: calc(var(--nav-h) + 1rem) 1rem 4rem;
+      }
+      footer {
+        padding: 1.2rem 1rem;
+      }
+    }
+
     @media(max-width:600px){
       .stat-chip{min-width:72px;}
+    }
+
+    @media(max-width:480px){
+      .page {
+        padding: calc(var(--nav-h) + 0.75rem) 0.9rem 3rem;
+      }
+      .tool-feature { padding: 18px 14px 14px; }
+      .tf-meta { word-break: break-word; white-space: normal; }
+      .cap-strip { grid-template-columns: repeat(2, 1fr); }
+      .stat-chip { min-width: 68px; }
+      .hero-sub { font-size: 0.75rem; }
+      .manifesto-strip { padding: 1.25rem 0; margin: 1.5rem 0 2rem; }
     }
 
     .cap-strip {
