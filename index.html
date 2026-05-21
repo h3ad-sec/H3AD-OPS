@@ -549,11 +549,6 @@
       .hamburger {
         display: flex;
       }
-
-      .page {
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
-      }
     }
 
     #scroll-sentinel{position:absolute;top:0;left:0;width:1px;height:10px;pointer-events:none;}
@@ -562,8 +557,7 @@
     .xv-pill-accent{color:var(--accent);}
     .xv-pill-text{color:var(--text);}
     .xv-pill-tagline{font-family:'Exo 2',sans-serif;font-weight:400;font-size:8px;color:var(--muted);letter-spacing:1.5px;}
-    @media(max-width:1024px){
-      .page{padding-top:calc(var(--nav-h)+20px);}
+    @media(max-width:1000px){
       .xv-nav-pill{opacity:1;transform:none;pointer-events:auto;transition:none;}
     }
 
@@ -574,7 +568,7 @@
 
     @media(max-width:640px){
       .page {
-        padding: calc(var(--nav-h) + 1rem) 1rem 4rem;
+        padding: calc(var(--nav-h) + 1rem) 1.1rem 4rem;
       }
       footer {
         padding: 1.2rem 1rem;
