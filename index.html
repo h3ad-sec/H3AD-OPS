@@ -386,6 +386,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      background: var(--panel); border: 1px solid var(--border); padding: 2px 10px; border-radius: 4px;
     }
 
     .section-label::after {
@@ -393,6 +394,14 @@
       flex: 1;
       height: 1px;
       background: var(--border);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: 3px;
     }
 
     .tool-feature {
@@ -459,7 +468,7 @@
 
     .tf-meta {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.57rem;
+      font-size: 0.65rem;
       letter-spacing: 0.2em;
       color: var(--muted);
       border-top: 1px solid var(--border-dim);
@@ -583,6 +592,14 @@
       .cap-strip { grid-template-columns: repeat(2, 1fr); }
       .stat-chip { min-width: 68px; }
       .manifesto-strip { padding: 1.25rem 0; margin: 1.5rem 0 2rem; }
+    }
+
+    @media(max-width:768px) {
+      .page { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero-title { font-size: clamp(1.4rem, 4vw, 2.2rem); }
+      .tool-feature { padding: 22px 20px 16px; }
+      .hero-stats { gap: 8px; }
+      .stat-chip { min-width: 76px; }
     }
 
     .cap-strip {
