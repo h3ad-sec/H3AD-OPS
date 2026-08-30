@@ -328,11 +328,13 @@
       position: fixed;
       top: var(--nav-h);
       left: 0;
-      right: 0;
+      width: min(300px, 86vw);
       background: var(--panel);
+      border-right: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
+      box-shadow: 6px 0 28px rgba(0, 0, 0, 0.35);
       z-index: 49;
-      padding: 0.75rem 1.25rem 1rem;
+      padding: 0.75rem 1rem 1rem;
       flex-direction: column;
       gap: 2px;
       max-height: calc(100vh - var(--nav-h));
@@ -553,11 +555,6 @@
       .xv-nav-pill{opacity:1;transform:none;pointer-events:auto;transition:none;}
     }
 
-    .hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin:0 auto 18px;max-width:640px;border-radius:6px;overflow:hidden;}
-    .hero-stat{background:var(--panel);padding:12px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;min-width:0;transition:background .2s;}
-    .hero-stat:hover{background:var(--panel-alt);}
-    .hero-stat-num{font-family:var(--sans);font-weight:700;font-size:20px;color:var(--accent);}
-    .hero-stat-label{font-family:'Exo 2',sans-serif;font-size:10px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;}
 
     @media(max-width:640px){
       .nav-links { display: none; }
@@ -576,7 +573,6 @@
       }
       .tool-feature { padding: 18px 16px 14px; }
       .tf-meta { word-break: break-word; white-space: normal; }
-      .hero-stat { padding: 10px 12px; }
     }
 
     @media(max-width:768px) {
@@ -589,10 +585,6 @@
       .xv-pill-tagline { display: none; }
       .xv-nav-pill { margin-left: 6px; padding-left: 6px; }
     }
-
-  /* H3AD-SEC MENU SYNC: hamburger-only nav */
-.nav-links{display:none!important;}
-.hamburger{display:flex!important;}
   </style>
 </head>
 
@@ -655,7 +647,18 @@
       </div>
       <a href="https://h3ad-sec.github.io/H3AD-DF/">H3AD-DF</a>
       <a href="https://h3ad-sec.github.io/H3AD-IR/">H3AD-IR</a>
-      <a href="https://h3ad-sec.github.io/H3AD-LEARN/">H3AD-LEARN</a>
+      <div class="nav-item">
+        <a href="https://h3ad-sec.github.io/H3AD-LEARN/">H3AD-LEARN</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-hunting/index.html" target="_blank" rel="noopener">THREAT HUNTING</a>
+            <a href="https://h3ad-sec.github.io/H3AD-LEARN/lolbas/index.html" target="_blank" rel="noopener">LOLBAS</a>
+            <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-intel/index.html" target="_blank" rel="noopener">THREAT INTEL</a>
+            <a href="https://h3ad-sec.github.io/H3AD-LEARN/cloud-security/index.html" target="_blank" rel="noopener">CLOUD SECURITY</a>
+            <a href="https://h3ad-sec.github.io/H3AD-LEARN/interview-prep/index.html" target="_blank" rel="noopener">INTERVIEW PREP</a>
+          </div>
+        </div>
+      </div>
       <div class="nav-divider"></div>
       <a href="mailto:h3adsec@gmail.com">CONTACT</a>
     </div>
@@ -689,6 +692,11 @@
     <a href="https://h3ad-sec.github.io/H3AD-DF/" onclick="closeDrawer()">H3AD-DF</a>
     <a href="https://h3ad-sec.github.io/H3AD-IR/" onclick="closeDrawer()">H3AD-IR</a>
     <a href="https://h3ad-sec.github.io/H3AD-LEARN/" onclick="closeDrawer()">H3AD-LEARN</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-hunting/index.html" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ THREAT HUNTING ↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/lolbas/index.html" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ LOLBAS ↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-intel/index.html" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ THREAT INTEL ↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/cloud-security/index.html" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ CLOUD SECURITY ↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/interview-prep/index.html" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ INTERVIEW PREP ↗</a>
     <a href="mailto:h3adsec@gmail.com" onclick="closeDrawer()">CONTACT</a>
   </div>
 
@@ -700,11 +708,6 @@
       <div class="hero-intro">
         <h1 class="hero-title">Copy-Ready Queries.<br><span>Guided Investigations.</span></h1>
         <p class="hero-sub">QUICKTRACE gives L1-L2 analysts copy-ready triage queries spanning auth, network, endpoint, SIEM, and email. PHISHOPS walks a phishing case from triage through closure with IOCs aggregated automatically as you go.</p>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><span class="hero-stat-num">2</span><span class="hero-stat-label">TOOLS LIVE</span></div>
-        <div class="hero-stat"><span class="hero-stat-num">18</span><span class="hero-stat-label">WORKFLOW QUERIES</span></div>
-        <div class="hero-stat"><span class="hero-stat-num">7</span><span class="hero-stat-label">TRACKER STEPS</span></div>
       </div>
     </div>
 
